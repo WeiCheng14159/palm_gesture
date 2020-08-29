@@ -133,7 +133,7 @@ class GestureRecognizer:
                             colour = (0, 0, 255)
 
                         cv2.putText(data_display,
-                                    "{}: {}".format(self.CLASSES[i], pred),
+                                    "{}: {:04.2f}".format(self.CLASSES[i], pred),
                                     (self.positions['hand_pose'][0], 30 + i*60),
                                     cv2.FONT_HERSHEY_SIMPLEX,
                                     0.75, (255, 255, 255), 2)
