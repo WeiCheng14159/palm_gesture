@@ -74,8 +74,8 @@ class GestureRecognizer:
         while True:
             # Read a new frame
             ok, self.frame = self.video.read()
-            #w, h, ch = self.frame.shape
-            #self.frame = cv2.resize(self.frame, (int(h/2), int(w/2)), interpolation=cv2.INTER_NEAREST)
+            w, h, ch = self.frame.shape
+            self.frame = cv2.resize(self.frame, (int(640*h/w), 640), interpolation=cv2.INTER_NEAREST)
             display = self.frame.copy() # Frame we'll do all the graphical drawing to
             data_display = np.zeros_like(display, dtype=np.uint8) # Black screen to display data
             if not ok:
