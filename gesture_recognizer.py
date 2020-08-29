@@ -169,7 +169,6 @@ class GestureRecognizer:
                 # Draw bounding box
                 p1 = (int(self.hand_bbox[0]), int(self.hand_bbox[1]))
                 p2 = (int(self.hand_bbox[0] + self.hand_bbox[2]), int(self.hand_bbox[1] + self.hand_bbox[3]))
-                cv2.rectangle(foreground_display, p1, p2, (255, 0, 0), 2, 1)
                 cv2.rectangle(display, p1, p2, (255, 0, 0), 2, 1)
 
                 # Calculate difference in hand position
@@ -185,28 +184,9 @@ class GestureRecognizer:
                 fps = cv2.getTickFrequency() / (cv2.getTickCount() - timer)
 
                 # Display FPS on frame
-                cv2.putText(foreground_display, "FPS : " + str(int(fps)), self.positions['fps'], cv2.FONT_HERSHEY_SIMPLEX, 0.65, (50, 170, 50), 2)
                 cv2.putText(display, "FPS : " + str(int(fps)), self.positions['fps'], cv2.FONT_HERSHEY_SIMPLEX, 0.65, (50, 170, 50), 2)
 
-                # Display pause command text
-                cv2.putText(foreground_display,
-                            "hold 'r' to recalibrate until the screen is black",
-                            (15, 400),
-                            cv2.FONT_HERSHEY_SIMPLEX,
-                            0.65, (0, 0, 255), 2)
-                cv2.putText(foreground_display,
-                            "to recalibrate",
-                            (15, 420),
-                            cv2.FONT_HERSHEY_SIMPLEX,
-                            0.65, (0, 0, 255), 2)
-                cv2.putText(foreground_display,
-                            "press 'p' to return to paused state",
-                            (15, 450),
-                            cv2.FONT_HERSHEY_SIMPLEX,
-                            0.65, (0, 0, 255), 2)
-
                 # Display foreground_display
-                cv2.imshow("foreground_display", foreground_display)
                 cv2.imshow("display", display)
                 cv2.imshow("hand_crop", hand_crop)
                 # Display result
